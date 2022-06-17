@@ -9,7 +9,7 @@ const getTipoEquipos = () => {
 }
 
 const crearTipoEquipo = (data) => {
-    return axiosInstance.post('tipoEquipo', data, {
+    return axiosInstance.post('tipo-Equipo', data, {
         headers: {
             'Content-type': 'application/json'
         }
@@ -17,7 +17,7 @@ const crearTipoEquipo = (data) => {
 }
 
 const editTipoEquipo = (tipoEquipoId, data) => {
-    return axiosInstance.put(`tipoEquipo/${tipoEquipoId}`, data, {
+    return axiosInstance.put(`tipo-Equipo/${tipoEquipoId}`, data, {
         headers: {
             'Content-type': 'application/json'
         }

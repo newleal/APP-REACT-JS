@@ -23,7 +23,7 @@ export const InventarioView = () => {
   },[]);
 
   const handelOpenModal = () => {
-    setOpenModal(!openModal);
+    setOpenModal(!openModal);     
   }
 
   return (
@@ -39,8 +39,8 @@ export const InventarioView = () => {
 
       {
         openModal ? <InventarioNew handelOpenModal={ handelOpenModal } /> : 
-        (<button type="button" class="btn btn-success fab" onClick={ handelOpenModal }>
-            <i class="fa-solid fa-plus"></i>
+        (<button type="button" className="btn btn-success fab" onClick={ handelOpenModal }>
+            <i className="fa-solid fa-plus"></i>
           </button>)        
       }  
 
