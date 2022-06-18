@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUsuarios, crearUsuario } from '../../services/usuarioService';
 import { UsuarioNew } from './UsuarioNew';
+import Swal from 'sweetalert2';
 
 export const UsuarioView = () => {
   const [ usuarios, setUsuarios ] = useState([]);
@@ -38,10 +39,18 @@ const handleOnSubmit = async (e) => {
   console.log(usuario);
 
   try {
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Cargando...'
+    });
+    Swal.showLoading();
     const {data} = await crearUsuario(usuario);
     console.log(data);
+    Swal.close();
+    listarUsuarios();
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    Swal.close();
   }
 }
 

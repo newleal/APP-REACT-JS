@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getMarcas, crearMarca } from '../../services/marcaService';
 import { MarcaNew } from './MarcaNew';
+import Swal from 'sweetalert2';
 
 export const MarcaView = () => {
 
@@ -38,10 +39,18 @@ const handleOnSubmit = async (e) => {
   console.log(marca);
 
   try {
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Cargando...'
+    });
+    Swal.showLoading();
     const {data} = await crearMarca(marca);
     console.log(data);
+    Swal.close();
+    listarMarcas();
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    Swal.close();
   }
 }
 

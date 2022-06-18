@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export const TipoNew = ({ tipo }) => { 
 
@@ -11,7 +12,7 @@ export const TipoNew = ({ tipo }) => {
               <td className="table-dark">{tipo.estado}</td>
               <td className="table-dark">{tipo.fechaCreacion}</td>
               <td className="table-dark">{tipo.fechaActualizacion}</td>
-              <td className="table-dark"><button type="button" className="btn btn-primary">Editar</button></td>
+              <td className="table-dark"><Link to={`tipo/edit/${tipo._id}`} type="button" className="btn btn-primary">Editar</Link></td>
             </tr> 
 
 

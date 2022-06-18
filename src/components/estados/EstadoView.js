@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getEstadoEquipo, crearEstadoEquipo } from '../../services/estadoEquipoService';
 import { EstadoNew } from './EstadoNew';
+import Swal from 'sweetalert2';
 
 export const EstadoView = () => {
   const [ estados, setEstados ] = useState([]);
@@ -38,10 +39,18 @@ const handleOnSubmit = async (e) => {
   console.log(estadoEquipo);
 
   try {
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Cargando...'
+    });
+    Swal.showLoading();
     const {data} = await crearEstadoEquipo(estadoEquipo);
     console.log(data);
+    Swal.close();
+    listarEstados();
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    Swal.close();
   }
 }
 

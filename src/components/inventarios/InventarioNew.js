@@ -6,7 +6,7 @@ import { getTipoEquipos } from '../../services/tipoEquipoService';
 import { crearInventarios } from '../../services/inventarioService';
 import Swal from 'sweetalert2';
 
-export function InventarioNew( { handelOpenModal } ) {
+export function InventarioNew( { handelOpenModal, listarInventarios } ) {
 
     const [ usuarios, setUsuarios ] = useState([]);
     const [ marcas, setMarcas ] = useState([]);
@@ -109,6 +109,7 @@ export function InventarioNew( { handelOpenModal } ) {
             console.log(data);
             Swal.close();
             handelOpenModal();
+            listarInventarios();
         } catch (error) {
             console.log(error);
             Swal.close();

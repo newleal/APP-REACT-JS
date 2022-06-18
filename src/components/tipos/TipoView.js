@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {  getTipoEquipos, crearTipoEquipo } from '../../services/tipoEquipoService';
-import { TipoNew } from './TipoNew'
+import { TipoNew } from './TipoNew';
+import Swal from 'sweetalert2';
+
+
 export const TipoView = () => {
   const [ tipos, setTipos ] = useState([]);
 
@@ -36,10 +39,18 @@ const handleOnSubmit = async (e) => {
   console.log(tipoEquipo);
 
   try {
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Cargando...'
+    });
+    Swal.showLoading();
     const {data} = await crearTipoEquipo(tipoEquipo);
     console.log(data);
+    Swal.close();
+    listarTipos();
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    Swal.close();
   }
 }
 
